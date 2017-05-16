@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"errors"
+)
 
 type Talk interface {
 	Hello(userName string) string
@@ -33,6 +36,17 @@ func main() {
 
 		defer func(i interface{}) {
 			fmt.Println("hello -> ", i)
-		}(i)
+		}(i * i)
 	}
+
+	panic( errors.New( "error" ) )
+
+	defer func() {
+
+		if p := recover(); p != nil {
+			fmt.Printf("Recovered panic: %s\n", p)
+		}
+
+	}()
+
 }
