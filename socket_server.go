@@ -22,6 +22,6 @@ func main() {
 
 	writer := bufio.NewWriter(conn)
 
-	
+
 
 }
