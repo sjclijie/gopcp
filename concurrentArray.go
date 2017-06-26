@@ -4,6 +4,7 @@ import (
 	"sync/atomic"
 	"fmt"
 	"errors"
+	"sync"
 )
 
 type ConcurrentArray interface {
@@ -94,13 +95,36 @@ func main() {
 
 	fmt.Println(arr)
 
-	arr.Set( uint32(1), 100 )
-	arr.Set( uint32(0), 120 )
+	arr.Set(uint32(1), 100)
+	arr.Set(uint32(0), 120)
 
-	fmt.Println( arr.Get( 1 ) )
-	fmt.Println( arr.Get( 0 ) )
+	fmt.Println(arr.Get(1))
+	fmt.Println(arr.Get(0))
 
 	//arr.Set(1, 100)
 	//
 	//fmt.Println(arr)
+
+	var once sync.Once
+
+	var count int
+
+	var wg sync.WaitGroup
+
+	wg.Add(100);
+
+	for i := 0; i < 100; i++ {
+		go func() {
+			once.Do(func() {
+				count++;
+			});
+			wg.Done()
+		}()
+	}
+
+	wg.Wait()
+
+	//time.Sleep(time.Second * 5)
+
+	fmt.Println(count)
 }
