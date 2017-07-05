@@ -28,7 +28,7 @@ func receive(strChan <-chan string, syncChan1 <-chan struct{}, syncChan2 chan<- 
 		if elem, ok := <-dataChan; ok {
 			fmt.Println("received data ", elem, " [receiver]")
 		} else {
-			break;
+			break
 		}
 	}
 
@@ -39,7 +39,7 @@ func receive(strChan <-chan string, syncChan1 <-chan struct{}, syncChan2 chan<- 
 
 func sender(strChan chan<- string, syncChan1 chan<- struct{}, syncChan2 chan<- struct{}) {
 
-	for _, elem := range []string{"a", "b", "c", "d" } {
+	for _, elem := range []string{"a", "b", "c", "d"} {
 		strChan <- elem
 		fmt.Println("Sent: ", elem, "[Sender]")
 

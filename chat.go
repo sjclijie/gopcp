@@ -2,8 +2,8 @@ package main
 
 import (
 	"bufio"
-	"os"
 	"fmt"
+	"os"
 )
 
 func main() {
@@ -38,10 +38,10 @@ func main() {
 		case "":
 			continue
 		case "nothing", "bye":
-			fmt.Println( "Bye!" )
+			fmt.Println("Bye!")
 			os.Exit(0)
 		default:
-			fmt.Println( "Sorry, i didn't catch you." )
+			fmt.Println("Sorry, i didn't catch you.")
 		}
 	}
 

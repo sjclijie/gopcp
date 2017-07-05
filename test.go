@@ -1,9 +1,9 @@
 package main
 
 import (
-	"runtime/debug"
 	"fmt"
 	"runtime"
+	"runtime/debug"
 )
 
 func main() {

@@ -1,22 +1,22 @@
 package main
 
 import (
-	"sync/atomic"
 	"fmt"
+	"sync/atomic"
 )
 
 func main() {
 
 	var counterVal atomic.Value
 
-	counterVal.Store([]int{1, 2, 3, 4, 5 })
+	counterVal.Store([]int{1, 2, 3, 4, 5})
 
-	anthorStore( &counterVal )
+	anthorStore(&counterVal)
 
-	fmt.Println( counterVal.Load() )
+	fmt.Println(counterVal.Load())
 
 }
 
-func anthorStore( counterVal *atomic.Value) {
-	counterVal.Store([]int{4, 5, 6, 7 })
+func anthorStore(counterVal *atomic.Value) {
+	counterVal.Store([]int{4, 5, 6, 7})
 }

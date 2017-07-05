@@ -2,8 +2,8 @@ package main
 
 import (
 	"bufio"
-	"os"
 	"fmt"
+	"os"
 )
 
 func main() {
@@ -12,7 +12,7 @@ func main() {
 
 	fmt.Println(ipv4)
 
-	ipv4_string := []string{"192.168.1.1", "192.168.1.2", "192.168.1.3" }
+	ipv4_string := []string{"192.168.1.1", "192.168.1.2", "192.168.1.3"}
 
 	fmt.Println(ipv4_string)
 
@@ -37,7 +37,6 @@ func main() {
 
 	ipswitches["192.168.1.1"] = true
 	ipswitches["192.168.1.2"] = false
-
 
 	fmt.Println(ipswitches)
 

@@ -1,10 +1,10 @@
 package main
 
 import (
-	"sync/atomic"
-	"fmt"
 	"errors"
+	"fmt"
 	"sync"
+	"sync/atomic"
 )
 
 type ConcurrentArray interface {
@@ -111,13 +111,13 @@ func main() {
 
 	var wg sync.WaitGroup
 
-	wg.Add(100);
+	wg.Add(100)
 
 	for i := 0; i < 100; i++ {
 		go func() {
 			once.Do(func() {
-				count++;
-			});
+				count++
+			})
 			wg.Done()
 		}()
 	}

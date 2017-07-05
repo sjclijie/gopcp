@@ -1,11 +1,11 @@
 package main
 
 import (
-	"runtime/debug"
-	"sync/atomic"
-	"sync"
 	"fmt"
 	"runtime"
+	"runtime/debug"
+	"sync"
+	"sync/atomic"
 )
 
 func main() {
@@ -18,7 +18,7 @@ func main() {
 		return atomic.AddInt32(&count, 1)
 	}
 
-	pool := sync.Pool{New: newFunc }
+	pool := sync.Pool{New: newFunc}
 
 	//New字段的使用
 	v1 := pool.Get()

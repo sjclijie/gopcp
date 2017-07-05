@@ -35,7 +35,7 @@ func main() {
 
 	go func() {
 
-		for _, elem := range []string{"a", "b", "c", "d" } {
+		for _, elem := range []string{"a", "b", "c", "d"} {
 			strChan <- elem
 			fmt.Println("Sent: ", elem, "[Sender]")
 			if elem == "c" {

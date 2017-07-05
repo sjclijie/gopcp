@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os/exec"
-	"fmt"
 	"bytes"
+	"fmt"
 	"io"
 	"os"
+	"os/exec"
 )
 
 func main() {
@@ -54,5 +54,5 @@ func main() {
 		fmt.Println("Error: Create Pipe failed: %s\n", err)
 	}
 
-	fmt.Println( reader, writer )
+	fmt.Println(reader, writer)
 }

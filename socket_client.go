@@ -1,14 +1,14 @@
 package main
 
 import (
-	"net"
-	"fmt"
-	"time"
-	"strings"
-	"math/rand"
 	"bytes"
+	"fmt"
 	"io"
+	"math/rand"
+	"net"
+	"strings"
 	"sync"
+	"time"
 )
 
 const (

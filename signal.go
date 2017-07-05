@@ -1,36 +1,36 @@
 package main
 
 import (
+	"fmt"
 	"os"
-	"syscall"
 	"os/signal"
 	"sync"
-	"fmt"
+	"syscall"
 	"time"
 )
 
 func main() {
 
 	/*
-	sigRecv := make(chan os.Signal, 1)
+		sigRecv := make(chan os.Signal, 1)
 
-	sigs := []os.Signal{syscall.SIGINT, syscall.SIGQUIT }
+		sigs := []os.Signal{syscall.SIGINT, syscall.SIGQUIT }
 
-	//SIGKILL和 SIGSTOP 对它们的响应只能是执行默认操作
+		//SIGKILL和 SIGSTOP 对它们的响应只能是执行默认操作
 
-	signal.Notify(sigRecv, sigs...)
+		signal.Notify(sigRecv, sigs...)
 
-	for sig := range sigRecv {
-		fmt.Printf("Received a signal: %s\n", sig)
-	}
+		for sig := range sigRecv {
+			fmt.Printf("Received a signal: %s\n", sig)
+		}
 
-	//关闭
-	signal.Stop(sigRecv)
-	close(sigRecv)
+		//关闭
+		signal.Stop(sigRecv)
+		close(sigRecv)
 	*/
 
 	sigRecv1 := make(chan os.Signal, 1)
-	sigs1 := []os.Signal{syscall.SIGINT }
+	sigs1 := []os.Signal{syscall.SIGINT}
 	signal.Notify(sigRecv1, sigs1...)
 
 	sigRecv2 := make(chan os.Signal, 1)
@@ -65,9 +65,9 @@ func main() {
 
 	time.Sleep(10 * time.Second)
 
-	signal.Stop( sigRecv1 )
+	signal.Stop(sigRecv1)
 
-	close( sigRecv1 )
+	close(sigRecv1)
 
 	wg.Wait()
 }

@@ -14,9 +14,9 @@ func main() {
 	go func() {
 		for {
 			if elem, ok := <-mapChan; ok {
-				elem[ "count" ]++
+				elem["count"]++
 			} else {
-				break;
+				break
 			}
 		}
 

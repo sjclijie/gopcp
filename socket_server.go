@@ -1,14 +1,14 @@
 package main
 
 import (
-	"net"
+	"bytes"
 	"fmt"
+	"io"
+	"math"
+	"net"
+	"strconv"
 	"strings"
 	"time"
-	"bytes"
-	"io"
-	"strconv"
-	"math"
 )
 
 const (
@@ -44,16 +44,16 @@ func main() {
 	}
 
 	/*
-	conn, err := listener.Accept()
+		conn, err := listener.Accept()
 
-	fmt.Println(conn.LocalAddr().Network())
-	fmt.Println(conn.RemoteAddr().Network())
+		fmt.Println(conn.LocalAddr().Network())
+		fmt.Println(conn.RemoteAddr().Network())
 
-	if err != nil {
-		fmt.Printf("Accept error: %s\n", err)
-	}
+		if err != nil {
+			fmt.Printf("Accept error: %s\n", err)
+		}
 
-	//writer := bufio.NewWriter(conn)
+		//writer := bufio.NewWriter(conn)
 	*/
 }
 

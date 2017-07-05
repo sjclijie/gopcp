@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"errors"
+	"fmt"
 )
 
 type Talk interface {
@@ -24,7 +24,7 @@ func main() {
 		fmt.Println("Unknown type")
 	}
 
-	ints := []int{10, 9, 8, 7, 6 }
+	ints := []int{10, 9, 8, 7, 6}
 
 	for i := range ints {
 		fmt.Println(i, "====>", ints[i])
@@ -39,7 +39,7 @@ func main() {
 		}(i * i)
 	}
 
-	panic( errors.New( "error" ) )
+	panic(errors.New("error"))
 
 	defer func() {
 

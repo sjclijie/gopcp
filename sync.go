@@ -1,12 +1,12 @@
 package main
 
 import (
-	"os"
-	"sync"
 	"errors"
 	"fmt"
-	"path/filepath"
 	"math/rand"
+	"os"
+	"path/filepath"
+	"sync"
 	"sync/atomic"
 )
 
@@ -142,7 +142,7 @@ func main() {
 
 	fmt.Println(df.WSN(), df.RSN(), df.DataLen())
 
-	data := Data{byte(rand.Int31n(256)), byte(rand.Int31n(256)), byte(rand.Int31n(256)), }
+	data := Data{byte(rand.Int31n(256)), byte(rand.Int31n(256)), byte(rand.Int31n(256))}
 
 	df.Write(data)
 
@@ -161,7 +161,7 @@ func main() {
 	fmt.Println(i32)
 
 	//一个负整数的补码可以通过对它按位求反并加一得到
-	atomic.AddUint32(&i32, ^uint32(1 - 1))
+	atomic.AddUint32(&i32, ^uint32(1-1))
 
 	fmt.Println(i32)
 
@@ -176,7 +176,7 @@ func main() {
 
 	addValue(&a, 100)
 
-	fmt.Println( a )
+	fmt.Println(a)
 
 }
 
@@ -185,7 +185,7 @@ func addValue(value *int32, delta int32) {
 	for {
 		v := &value
 		if atomic.CompareAndSwapInt32(value, v, v+delta) {
-			break;
+			break
 		}
 	}
 }
