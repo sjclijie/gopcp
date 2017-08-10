@@ -7,11 +7,12 @@ import (
 	"bytes"
 	"net/http/cookiejar"
 	"time"
+	"context"
 	"errors"
 )
 
 type result struct {
-	Status int 	  `json:"status"`
+	Status int      `json:"status"`
 	Msg    string `json:"msg"`
 	Error  string `json:"error"`
 	Data   interface{} `json:"data"`
@@ -61,7 +62,7 @@ func main() {
 			return err
 		}
 
-		fmt.Println( result.Msg, result.Status)
+		fmt.Println(result.Msg, result.Status, result.Data)
 
 		return nil
 	})
@@ -77,17 +78,29 @@ func doRequest(timeout time.Duration, req *http.Request, f func(response *http.R
 		return nil
 	}
 
+	/*
 	timer := make(chan struct{})
 
 	time.AfterFunc(timeout, func() {
 		timer <- struct{}{}
 	})
+	*/
+
+	//ctx, cancel := context.WithCancel(context.TODO())
+	//
+	//defer cancel()
+
+	ctx, cancel := context.WithTimeout(context.Background(), timeout)
+	defer cancel()
+
+	req = req.WithContext(ctx)
 
 	/*
 	tr := &http.Transport{Dial: func(network, addr string) (net.Conn, error) {
 		return net.DialTimeout(network, addr, timeout)
 	}}
 	*/
+
 	tr := &http.Transport{}
 
 	client := &http.Client{Jar: jar, Transport: tr }
@@ -99,10 +112,19 @@ func doRequest(timeout time.Duration, req *http.Request, f func(response *http.R
 	}()
 
 	select {
+	case <-ctx.Done():
+		return errors.New("timeout....")
+	case err := <-c:
+		return err
+	}
+
+	/*
+	select {
 	case <-timer:
 		tr.CancelRequest(req)
 		return errors.New("timeout....")
 	case err := <-c:
 		return err
 	}
+	*/
 }
