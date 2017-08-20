@@ -6,6 +6,7 @@ import (
 	"io"
 	"time"
 	"fmt"
+	"io/ioutil"
 )
 
 func DoRequest(ctx context.Context, req *http.Request) (*http.Response, error) {
@@ -77,6 +78,6 @@ func main() {
 		return
 	}
 
-	fmt.Println(resp.Body)
 
+	fmt.Println(ioutil.ReadAll(resp.Body))
 }
